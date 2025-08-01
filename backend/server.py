@@ -737,10 +737,15 @@ async def get_status_checks():
 # Include the router in the main app
 app.include_router(api_router)
 
+# Add CORS for your IONOS domain
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000", 
+        "https://your-domain.ionos.space",  # Replace with your IONOS domain
+        "https://your-custom-domain.com"    # Replace with your custom domain
+    ],
     allow_credentials=True,
-    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
